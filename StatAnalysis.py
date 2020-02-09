@@ -1,29 +1,27 @@
 import math
-
+import statistics
+import numpy
 
 def determinecorrelation(listx, listy):
     """Determine correlation coefiicent R"""
 
     # Get standard deviation for both lists
-    meanx = math.fsum(listx) / listx.count()
-    meany = math.fsum(listy) / listy.count()
-    sqrlistx = ()
-    sqrlisty = ()
+    meanx = sum(listx) / len(listx)
+    meany = sum(listy) / len(listy)
+    stddevx = statistics.stdev(listx, meanx)
+    stddevy = statistics.stdev(test2, meany)
 
-    for x in listx:
-        sqrlistx.append((x - meanx) ** 2)
+    covar = numpy.cov(listx, listy)[0][1]
 
-    for y in listy:
-        sqrlisty.append((x - meany) ** 2)
+    # Use Numpy to determine covariance and use our standard deviations
+    return covar/(stddevy*stddevx)
 
-    sqrmeanx = math.fsum(sqrlistx) / listx.count()
-    sqrmeany = math.fsum(sqrlisty) / listy.count()
+test1 = [1, 2, 2, 3]
+test2 = [1, 2, 3, 6]
+print(determinecorrelation(test1, test2))
 
-    stddevx = math.sqrt(sqrmeanx)
-    stddevy = math.sqrt(sqrlisty)
 
-    # Use standard deviation to determine correlation
-    for x in listx:
+
 
 
 
